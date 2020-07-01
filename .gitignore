@@ -1,0 +1,9 @@
+.idea
+project
+target
+src/test
+spark-warehouse
+data
+Elasticsearch_manipulation
+mongoDB_manipulation
+tutorial
