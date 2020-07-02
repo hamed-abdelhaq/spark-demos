@@ -30,11 +30,10 @@ Getting to know each other
     10.	Introduction to Tensorflow and Keras to classify huge textual content and apply that for sentiment analysis.
     11.	Data Stream and Apache Kafka
    
- * Logistics [TBD]
  
- ### Spark as a part of the Hadoop echo System
-* Big Data Tools 
+### Spark as a part of the Hadoop echo System
 <a name="topic1-apache-spark"></a>
+* Big Data Tools
     * _Hadoop_: Batch processing of data
     * _Spark_: Both real-time and batch processing
     ![](images/hadoop-spark.PNG)
@@ -68,14 +67,15 @@ Getting to know each other
     * multiple deployment mode: e.g., mesos, yarn, spark cluster manager 
 * Industry using Apache Spark:
     ![image](images/companies-using-apache-spark.PNG)
-* Spark APIs:
-    * Spark Applications are built using a number of programming languages, i.e., Scala, Python, Java, R
-    * Scala is prefered an long with Spark since:
-        * Scala is a statically typed language which allows us to find compile time errors
-        * Scala has multiple standard libraries and cores which allows quick integration of the databases in Big Data ecosystems.
-        * Scala is frequently over 10 times faster than Python.
-        * Single line of code in Scala can sometimes replace 20 to 25 lines of code in Java
-        * Excellent built-in concurrency support and libraries
+###Spark APIs, Architecture, and Components:
+<a name="topic1-spark-arch-components"></a>
+* Spark Applications are built using a number of programming languages, i.e., Scala, Python, Java, R
+* Scala is preferred an long with Spark since:
+    * Scala is a statically typed language which allows us to find compile time errors
+    * Scala has multiple standard libraries and cores which allows quick integration of the databases in Big Data ecosystems.
+    * Scala is frequently over 10 times faster than Python.
+    * Single line of code in Scala can sometimes replace 20 to 25 lines of code in Java
+    * Excellent built-in concurrency support and libraries
               For more information, see [(Scala vs Python)](https://www.kdnuggets.com/2018/05/apache-spark-python-scala.html)
 * Spark Architecture:
     * Spark uses a master-worker architecture
@@ -86,7 +86,7 @@ Getting to know each other
         job.
         * Examples of cluster manager: Spark Standalone Cluster, Apache Mesos, Hadoop Yarn, and Kubernetes.
         * task are distributed over the worker nodes.
-        * Worker nodes (slave nodes): they execute the tasks and return result to Spark context.
+    * Worker nodes (slave nodes): they execute the tasks and return result to Spark context.
         * Executor: a distributed engine inside each worker, responsible for executing the tasks.
         * To recap: Spark context takes a job and breaks it down into a number of tasks and distributes them to the 
         worker nodes.
@@ -156,7 +156,7 @@ Spark
 
 
             
- ### Configuring Spark Development Environment (9:50 - 10:20)
+ ### Configuring Spark Development Environment
  
  *	Java installed
  *	IntelliJ installed and Scala included
@@ -164,7 +164,7 @@ Spark
     For more detailed steps, follow the instructions in 
    [Configuring Spark](tutorials/setup-spark-dev-environment.docx)
         
- ### Practice-1: Spark-shell and scala APIs (10:30 - 11:00)
+ ### Practice-1: Spark-shell and scala APIs
 * Running spark-shell
             
             cmd
