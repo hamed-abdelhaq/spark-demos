@@ -36,7 +36,7 @@ Getting to know each other
 * Big Data Tools
     * _Hadoop_: Batch processing of data
     * _Spark_: Both real-time and batch processing
-    ![](tutorials/images/hadoop-spark.PNG)
+    ![](images/hadoop-spark.PNG)
 * [Introduction to Hadoop ](tutorials/Hadoop_Introduction.pptx)
 * What is Apache Spark?
     * Hadoop sub-project by UC Berkeley's ampLab in 2009
@@ -46,7 +46,7 @@ Getting to know each other
     * data parallelism and fault-tolerance
 * Spark History
     Depicted in the figure below
-   ![](tutorials/images/spark_history.PNG)
+   ![](images/spark_history.PNG)
 * Who Can Benefit from Spark?
     * _Data Scientists_: Spark provides data-focused tools towards
      going beyond problems that fit in a single machine
@@ -58,8 +58,8 @@ Getting to know each other
     * _Researchers_: New opportunities exist for designing distributed algorithms
     and testing their performance in clusters.
 * Spark vs Hadoop (sorting 1PB)
-    ![image](tutorials/images/hadoop_vs_spark2.PNG)
-    ![image](tutorials/images/hadoop_vs_spark.PNG)
+    ![image](images/hadoop_vs_spark2.PNG)
+    ![image](images/hadoop_vs_spark.PNG)
 * Spark Features: 
     * Real-time processing with low latency because of in-memory computation
     * 100x time faster for large-scale processing
@@ -67,7 +67,7 @@ Getting to know each other
     * Powerful caching
     * multiple deployment mode: e.g., mesos, yarn, spark cluster manager 
 * Industry using Apache Spark:
-    ![image](tutorials/images/companies-using-apache-spark.PNG)
+    ![image](images/companies-using-apache-spark.PNG)
 * Spark APIs:
     * Spark Applications are built using a number of programming languages, i.e., Scala, Python, Java, R
     * Scala is prefered an long with Spark since:
@@ -90,7 +90,7 @@ Getting to know each other
         * Executor: a distributed engine inside each worker, responsible for executing the tasks.
         * To recap: Spark context takes a job and breaks it down into a number of tasks and distributes them to the 
         worker nodes.
-        ![image](tutorials/images/spark_arch_org.png)
+        ![image](images/spark_arch_org.png)
 * Spark Shells:
     * Spark-shell: with Scala Support
     * PySpark with python Support
@@ -136,7 +136,7 @@ Getting to know each other
 * Spark Components:
     The main functionality is implemented in Spark Core. Other
     components exist, that integrate tightly with Spark Core.
-    ![image](tutorials/images/spark_arch.png)
+    ![image](images/spark_arch.png)
     
 * Useful libraries in Spark:
     Currently the following libs exist and they are evolving really-really fast:
@@ -171,7 +171,7 @@ Spark
             type "spark-shell"
             
  
-   [![spark cotext](tutorials/images/spark-context.PNG)](https://data-flair.training/blogs/learn-apache-spark-sparkcontext/ )
+   [![spark cotext](images/spark-context.PNG)](https://data-flair.training/blogs/learn-apache-spark-sparkcontext/ )
    
    Spark Context:
    * the entry gate of Apache Spark functionality.  
