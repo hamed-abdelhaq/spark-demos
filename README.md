@@ -154,22 +154,21 @@ Spark
 
                             
               
-* Resource-1.1: 
-[Introduction to Spark](https://www.youtube.com/watch?v=QaoJNXW6SQo)
+* [More About Apache Spark](https://www.youtube.com/watch?v=QaoJNXW6SQo)
 
 
-            
+         
  ### Configuring Spark Development Environment
  
  *	Java installed
  *	IntelliJ installed and Scala included
- *	Resource-1.2:Spark binaries downloaded and configured.
+ *	Spark binaries downloaded and configured.
     For more detailed steps, follow the instructions in 
-   [Configuring Spark](tutorials/setup-spark-dev-environment.docx)
-        
+   [Configuring Spark](https://medium.com/@ligz/installing-standalone-spark-on-windows-made-easy-with-powershell-7f7309799bc7)
+ 
+ <a name="topic1-scala-APIs"></a>          
  ### Practice-1: Spark-shell and scala APIs
 * Running spark-shell
-            
             cmd
             type "spark-shell"
             
@@ -180,12 +179,12 @@ Spark
    * the entry gate of Apache Spark functionality.  
    * allows your Spark Application to access Spark Cluster with 
    the help of Resource Manager (YARN/Mesos). 
-   * To create SparkContext, first SparkConf should be made. 
+   * To create SparkContext, first SparkConf should be established. 
         * The SparkConf has a configuration parameter that our Spark driver application will pass to SparkContext.
         * SparkContext is generated automatically when spark-shell is loaded. SparkContext will use default 
         configurations to set the parameters of SparkConf.
         
-   *  [Kick-off Start with Scala](src/main/scala/SearchInList.scala) 
+   *  [Kick-off Start with Scala](src/main/scala/org/hamedabdelhaq/spark/demos/basics/SearchInList.scala) 
    
         * Simple commands: creating list variable, parallelize it, and returning a sublist with elements below 10
         
@@ -199,7 +198,7 @@ Spark
     * [Basics of Scala Programming](http://allaboutscala.com/tutorials/chapter-2-learning-basics-scala-programming/)
     * [Higher-order functions in Scala](https://dzone.com/articles/higher-order-functions-in-scala-1)
 
- ### Practice-1: more spark hands-on
+ ### Practice-2: more spark hands-on
  
  * [Hello World Example (Word Count)](src/main/scala/WordCountSpark.scala)
  * [Practice-3: Revenue Aggregation](src/main/scala/retail_db/RevenueRetrieval.scala)
