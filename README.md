@@ -6,10 +6,10 @@
 5. [ Topic-5. ](#topic5)
 
 <a name="topic1"></a>
-## DAY-1: Introduction to Big Data and Apache Spark
-### Introduction (9:00 - 9:15)
+## Topic-1: Introduction to Big Data and Apache Spark
+### Introduction
 Getting to know each other
-### About the training session (9:00 - 9:15)
+### About the training session
 * Motivation: the era of big data, sources of big data,
  statistics, applications and use cases.
  
@@ -32,12 +32,11 @@ Getting to know each other
    
  * Logistics [TBD]
  
- ### Spark as a part of the Hadoop echo System (9:30 - 9:50)
+ ### Spark as a part of the Hadoop echo System
 * Big Data Tools
     * _Hadoop_: Batch processing of data
     * _Spark_: Both real-time and batch processing
     ![](images/hadoop-spark.PNG)
-* [Introduction to Hadoop ](tutorials/Hadoop_Introduction.pptx)
 * What is Apache Spark?
     * Hadoop sub-project by UC Berkeley's ampLab in 2009
     * Spark is a UNIFIED platform for cluster computing and distributed big data processing, enabling efficient big
@@ -196,7 +195,7 @@ Spark
     * [Basics of Scala Programming](http://allaboutscala.com/tutorials/chapter-2-learning-basics-scala-programming/)
     * [Higher-order functions in Scala](https://dzone.com/articles/higher-order-functions-in-scala-1)
 
- ### Practice-1: more spark hands-on (11:10 - 12:00)
+ ### Practice-1: more spark hands-on
  
  * [Hello World Example (Word Count)](src/main/scala/WordCountSpark.scala)
  * [Practice-3: Revenue Aggregation](src/main/scala/retail_db/RevenueRetrieval.scala)
@@ -389,13 +388,13 @@ val df = spark.read.parquet("path_of_parquet_file")
 
 <a name="topic4"></a>
 ## Topic-4: Knowledge Mining from Massive Text
-### Project Discussion (9:00 - 9:30)
+### Project Discussion
 Each group presents the current status of their project
-### Review (9:30 - 9:40)
-* What we have discussed on Day-3
-* Plan describing the topics to be discussed on Day-4
+### Review
+* What we have discussed on Topic-3
+* Plan describing the topics to be discussed on Topic-4
 
-### NLP and Spark (9:40 - 10:30)
+### NLP and Spark
 
 *	Introduction to NLP
 *	Applications
@@ -427,4 +426,4 @@ Spark NLP is an open-source natural language processing library, built on top of
 [code](https://github.com/hamed-abdelhaq/big-data-demos/blob/master/Spark-NLP/d4p1-ner-pos-relationship.ipynb)  
 [data](https://github.com/hamed-abdelhaq/big-data-demos/tree/master/data/spark_nlp_dataset.parquet)
 
-<a name="day5"></a>
+<a name="topic5"></a>
