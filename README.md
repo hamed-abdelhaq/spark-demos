@@ -68,10 +68,10 @@ Getting to know each other
 * Industry using Apache Spark:
     ![image](images/companies-using-apache-spark.PNG)
     
+
+
+### Spark APIs, Architecture, and Components:
 <a name="topic1-spark-arch-components"></a>
-
-###Spark APIs, Architecture, and Components:
-
 * Spark Applications are built using a number of programming languages, i.e., Scala, Python, Java, R
 * Scala is preferred an long with Spark since:
     * Scala is a statically typed language which allows us to find compile time errors
