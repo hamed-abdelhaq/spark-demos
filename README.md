@@ -37,7 +37,7 @@ Getting to know each other
     * _Hadoop_: Batch processing of data
     * _Spark_: Both real-time and batch processing
     ![](images/hadoop-spark.PNG)
-* What is Apache Spark?
+* What is Apache Spark?[](#apache-spark)
     * Hadoop sub-project by UC Berkeley's ampLab in 2009
     * Spark is a UNIFIED platform for cluster computing and distributed big data processing, enabling efficient big
       data management and analytics.
