@@ -67,6 +67,7 @@ Getting to know each other
     * multiple deployment mode: e.g., mesos, yarn, spark cluster manager 
 * Industry using Apache Spark:
     ![image](images/companies-using-apache-spark.PNG)
+    
 ###Spark APIs, Architecture, and Components:
 <a name="topic1-spark-arch-components"></a>
 * Spark Applications are built using a number of programming languages, i.e., Scala, Python, Java, R
