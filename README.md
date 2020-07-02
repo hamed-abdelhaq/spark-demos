@@ -33,11 +33,12 @@ Getting to know each other
  * Logistics [TBD]
  
  ### Spark as a part of the Hadoop echo System
-* Big Data Tools
+* Big Data Tools 
+<a name="topic1-apache-spark"></a>
     * _Hadoop_: Batch processing of data
     * _Spark_: Both real-time and batch processing
     ![](images/hadoop-spark.PNG)
-* What is Apache Spark?[](#apache-spark)
+* What is Apache Spark?
     * Hadoop sub-project by UC Berkeley's ampLab in 2009
     * Spark is a UNIFIED platform for cluster computing and distributed big data processing, enabling efficient big
       data management and analytics.
