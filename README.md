@@ -200,8 +200,8 @@ Spark
 
  ### Practice-2: more spark hands-on
  
- * [Hello World Example (Word Count)](src/main/scala/WordCountSpark.scala)
- * [Practice-3: Revenue Aggregation](src/main/scala/retail_db/RevenueRetrieval.scala)
+ * [Hello World Example (Word Count)](src/main/scala/org/hamedabdelhaq/spark/demos/basics/WordCountSpark.scala)
+ * [Revenue Aggregation](src/main/scala/org/hamedabdelhaq/spark/demos/retail_db/RevenueRetrieval.scala)
 
       
       
