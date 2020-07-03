@@ -9,6 +9,7 @@ object WordCountSpark {
 
   def main(args: Array[String]): Unit = {
 
+    // code segment used to prevent excessive logging
     val nullAppender = new NullAppender
     BasicConfigurator.configure(nullAppender)
 
@@ -18,7 +19,6 @@ object WordCountSpark {
 
     // creating spark context
     val sc = new SparkContext(conf)
-    sc.setLogLevel("ERROR")
 
 
     val text = sc.textFile("data/bigFile.txt")//args(0))
