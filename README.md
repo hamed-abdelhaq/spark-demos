@@ -119,8 +119,7 @@ Getting to know each other
         1. transformation: creating a new RDD from an existing one, e.g., using `map, filter, groupBy, reduceByKey,
                                                                     partitionBy, sortByKey, join, etc`
             <br />E.g., ```val resultRDD = listRDD.map(x=>(x,1)) ```
-            <br />E.g., ```sc.parallelize(List(1,2,3)).flatMap(x=>(x,x,x)).collect ```
-            <br />E.g., ```sc.parallelize(List(1,2,3,4,5)).filter(_ %2==0).collect ``` //filter: returns an RRD containing all elements that meet a passed predicate 
+            <br />E.g., ```sc.parallelize(List(1,2,3,4,5)).filter(_ %2==0) ``` //filter: returns an RRD containing all elements that meet a passed predicate 
 
         2. action: applied on the RDD, e.g., using `reduce, collect, take, count, saveAsTextFile, etc`
         
@@ -187,9 +186,7 @@ Spark
    *  [Kick-off Start with Scala](src/main/scala/org/hamedabdelhaq/spark/demos/basics/SearchInList.scala) 
    
         * Simple commands: creating list variable, parallelize it, and returning a sublist with elements below 10
-        
-        * return the list of values > 4
-      
+              
         * Also, we will try out the code directly using spark-shell.
         
 * Clarifying the concept of transformation (lazy transformation) and actions with examples
@@ -198,10 +195,11 @@ Spark
     * [Basics of Scala Programming](http://allaboutscala.com/tutorials/chapter-2-learning-basics-scala-programming/)
     * [Higher-order functions in Scala](https://dzone.com/articles/higher-order-functions-in-scala-1)
 
- ### Practice-2: more spark hands-on
+ ### Practice-2:
  
  * [Hello World Example (Word Count)](src/main/scala/org/hamedabdelhaq/spark/demos/basics/WordCountSpark.scala)
- * [Revenue Aggregation](src/main/scala/org/hamedabdelhaq/spark/demos/retail_db/RevenueRetrieval.scala)
+ ### Practice-3:
+ * [Handling Retail Dataset using Spark](src/main/scala/org/hamedabdelhaq/spark/demos/retail_db/RevenueRetrieval.scala)
 
       
       
