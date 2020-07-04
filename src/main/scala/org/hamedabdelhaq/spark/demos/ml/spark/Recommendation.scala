@@ -31,9 +31,9 @@ object Recommendation {
     // set up environment
 
     val conf = new SparkConf()
-      .setMaster("local")
+      //.setMaster("local")
       .setAppName("MovieLensALS")
-      .set("spark.executor.memory", "2g")
+      .set("spark.executor.memory", "3g")
 
     val sc = new SparkContext(conf)
 

@@ -7,7 +7,7 @@ object RevenueRetrieval {
 
     // creating conf object holding spark context information required in the driver application
     val conf = new SparkConf().
-      setMaster(args(0)).
+      setMaster("local").
       setAppName("Revenue Retrieval")
 
     // creating spark context
@@ -18,7 +18,7 @@ object RevenueRetrieval {
 
     // using spark context to read a file from the file system and create an RDD accordingly
     // id, order_id, product_id, quantity, total_price, unit_price
-    val orderItems = sc.textFile(args(1))
+    val orderItems = sc.textFile(args(0))
     println(orderItems.count());
 
     // doing a couple of transformation operations:
@@ -43,7 +43,7 @@ object RevenueRetrieval {
         .mapValues(x=>(x._1/ x._2))
         .map(oi => oi._1 + "," + oi._2)
 
-    average_by_key.saveAsTextFile(args(2))
+    average_by_key.saveAsTextFile(args(1))
 
     //Practice-1.1) replace the above mapValues by map to achieve the same functionality.
 

@@ -21,11 +21,13 @@ object WordCountSpark {
     val sc = new SparkContext(conf)
 
 
-    val text = sc.textFile("data/bigFile.txt")//args(0))
+    val text = sc.textFile("data/bigFile.txt")
     val counts = text.flatMap(line => line.split(" ")
     ).map(word => (word,1)).reduceByKey(_+_)
 
-    println(counts.collect.size);
+
+    counts.saveAsTextFile("data/wordCountResult");
+
   }
 
 }

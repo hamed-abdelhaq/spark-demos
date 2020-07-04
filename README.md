@@ -70,16 +70,9 @@ Getting to know each other
     
 
 
-### Spark APIs, Architecture, and Components:
+### Spark Architecture, APIs, and Components:
 <a name="topic1-spark-arch-components"></a>
-* Spark Applications are built using a number of programming languages, i.e., Scala, Python, Java, R
-* Scala is preferred an long with Spark since:
-    * Scala is a statically typed language which allows us to find compile time errors
-    * Scala has multiple standard libraries and cores which allows quick integration of the databases in Big Data ecosystems.
-    * Scala is frequently over 10 times faster than Python.
-    * Single line of code in Scala can sometimes replace 20 to 25 lines of code in Java
-    * Excellent built-in concurrency support and libraries
-              For more information, see [(Scala vs Python)](https://www.kdnuggets.com/2018/05/apache-spark-python-scala.html)
+
 * Spark Architecture:
     * Spark uses a master-worker architecture
     * Master node: a driver program that drives your application (The code you are writing) or the shell if you are using an interactive shell.
@@ -94,6 +87,15 @@ Getting to know each other
         * To recap: Spark context takes a job and breaks it down into a number of tasks and distributes them to the 
         worker nodes.
         ![image](images/spark_arch_org.png)
+        
+* Spark Applications are built using a number of programming languages, i.e., Scala, Python, Java, R
+* Scala is preferred an long with Spark since:
+    * Scala is a statically typed language which allows us to find compile time errors
+    * Scala has multiple standard libraries and cores which allows quick integration of the databases in Big Data ecosystems.
+    * Scala is frequently over 10 times faster than Python.
+    * Single line of code in Scala can sometimes replace 20 to 25 lines of code in Java
+    * Excellent built-in concurrency support and libraries
+              For more information, see [(Scala vs Python)](https://www.kdnuggets.com/2018/05/apache-spark-python-scala.html)
 * Spark Shells:
     * Spark-shell: with Scala Support
     * PySpark with python Support
@@ -115,7 +117,7 @@ Getting to know each other
         <br/> ```val listRDD = sc.parallelize(List("Java", "Scala", "R"))```
         - transforming a certain RDD into another RDD 
         <br /> ``` val resultRDD = listRDD.filter(x=>x.contains("R")) ```
-    * Spark operations:
+    * Operations on RDDs:
         1. transformation: creating a new RDD from an existing one, e.g., using `map, filter, groupBy, reduceByKey,
                                                                     partitionBy, sortByKey, join, etc`
             <br />E.g., ```val resultRDD = listRDD.map(x=>(x,1)) ```
@@ -130,7 +132,7 @@ Getting to know each other
             as count().
             
             <br />E.g., ```val result = sc.parallelize(1 to 100).reduce(_+_) ``` // sum of all elements
-            <br />E.g., ```val result = sc.parallelize(List("Hamed","Abdelhaq")).reduce((x1,x2)=>x1 + " " + x2) ``` // sum of all elements
+            <br />E.g., ```val result = sc.parallelize(List("Hamed","Abdelhaq")).reduce((x1,x2)=>x1 + " " + x2) ``` 
             
             Exercise: Have a look at `first`, `take` action functions
 
