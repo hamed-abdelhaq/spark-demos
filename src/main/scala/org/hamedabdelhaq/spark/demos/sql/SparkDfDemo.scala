@@ -11,8 +11,10 @@ object SparkDfDemo {
     val nullAppender = new NullAppender
     BasicConfigurator.configure(nullAppender)
 
-    // creating conf object holding spark context information
-    // required in the driver application
+    //    Spark session is a unified entry point of a spark application from Spark 2.0.
+    //    It provides a way to interact with various spark’s functionality with a lesser number of constructs.
+    //    Instead of having a spark context, hive context, SQL context, now all of it is encapsulated in a Spark session.
+    //    More information: https://medium.com/@achilleus/spark-session-10d0d66d1d24
     val spark = SparkSession
       .builder()
       .master("local")
@@ -20,11 +22,12 @@ object SparkDfDemo {
       .getOrCreate()
 
 
-    // using spark context to read a file from the file system and create an dataframe accordingly
+    // using spark session to read a file from the file system and create a dataframe accordingly
     val df = spark
       .read
       .json("data/retail_db_json/customers")
 
+    df.show(10)
 
     // calculating the number of customers per city
     // groupedByCity: dataframe
@@ -33,6 +36,8 @@ object SparkDfDemo {
       .count()
     groupedByCity.show(10)
 
+    System.exit(0)
+
 
     // implicits object gives implicit conversions for converting Scala objects (incl. RDDs)
     // into a Dataset, DataFrame, Columns or supporting such conversions
@@ -40,25 +45,25 @@ object SparkDfDemo {
 
 
 
-    // Practice-2.1:
+    // Exercise-2.1:
     // 1- Show how you can save the resulting dataframe into json file(s)
-    // 2- Sort the cities according to the number of customers in an descending order.
+    // 2- Sort the cities according to the number of customers in a descending order.
 
     ///////////////////////////////
     // count the number of customers whose first name is "Robert" and last name is "Smith"
     // filteredDF: DateSet
     val filteredDF =
       df.filter('customer_fname === "Robert" && $"customer_lname" === "Smith");
-    println("count the number of customers whose first name is \"Robert\" and last name is \"Smith\"" +
-      filteredDF.count())
-    // Practice-2.2:
+    println("count the number of customers whose first name is \"Robert\" and last name is \"Smith\"" + filteredDF.count())
+    // Exercise-2.2:
     //1- Count the number of cities that has street names ending with 'Plaza'
     //////////////////////////////
 
 
     //////////////////////////
     // print the name of the city where the name "Robert Smith" has the largest frequency.
-    val cityWithMostFreq = filteredDF
+    val cityWithMostFreq =
+    filteredDF
       .groupBy("customer_city")
       .count()
       .sort($"count".desc)
