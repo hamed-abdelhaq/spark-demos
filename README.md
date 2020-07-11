@@ -231,13 +231,25 @@ throughout a single application. In other words, Spark SQL allows developers to:
 * Import relational data from Parquet files and Hive tables
 * Run SQL queries over imported data and existing RDDs
 * How to build UDF and call during the manipulation of DataFrames
-* Easily  write RDDs out to Hive tables or Parquet files
+* Easily  write RDDs out to Parquet files and other storage resources
 
+### Comparison Between RDDs, DataFrame, and Datasets
+ [Resource 2.1](https://data-flair.training/blogs/apache-spark-rdd-vs-dataframe-vs-dataset/)
+brief introduction of Spark APIs i.e. RDD, DataFrame and Dataset
+* RDD is the fundamental data structure of Spark. It allows a programmer to perform in-memory computations on large clusters in a fault-tolerant manner
+* Spark Dataframe APIs: 
+    * data organized into named columns
+    * similar to tables in a relational database
+    * allows developers to impose a structure onto a distributed collection of data
+* Spark Dataset APIs:
+    * extension of DataFrame API
+    * provides type-safe, object-oriented programming interface
+        
 ### Parquet files as Columnar file format 
 Parquet stores binary data in a column-wise manner. That is the values in each column are organized so that they are all 
 adjacent, enabling better compression and performance. This is essential for queries which read particular columns from tables 
  with many columns since only needed columns are read and IO is reduced. Read this for more details on Parquet.
-[Resource 2.1](https://medium.com/@sparkcodegeeks/apache-spark-and-parquet-example-spark-by-examples-5b701a9e606d)
+[Resource 2.2](https://medium.com/@sparkcodegeeks/apache-spark-and-parquet-example-spark-by-examples-5b701a9e606d)
 
 * loading a parquet file into a spark dataframe
 ```scala
@@ -251,17 +263,7 @@ val df = spark.read.parquet("path_of_parquet_file")
  df.write.parquet("path_of_parquet_file")
 ```
 
-### Comparison Between RDDs, DataFrame, and Datasets
- [Resource 2.2](https://data-flair.training/blogs/apache-spark-rdd-vs-dataframe-vs-dataset/)
- * brief introduction of Spark APIs i.e. RDD, DataFrame and Dataset
-    * RDD is the fundamental data structure of Spark. It allows a programmer to perform in-memory computations on large clusters in a fault-tolerant manner
- * Spark Dataframe APIs: 
-    * data organized into named columns
-    * similar to tables in a relational database
-    * allows developers to impose a structure onto a distributed collection of data
- * Spark Dataset APIs:
-    * extension of DataFrame API
-    * provides type-safe, object-oriented programming interface
+
 
 
 ### Data exploration using Spark SQL (Applicatons)
@@ -277,44 +279,50 @@ val df = spark.read.parquet("path_of_parquet_file")
     * Applications
     * Technologies and links to big data
     * [Resource-2.4](tutorials/Information Retrieval-1.pptx)
-    
-* ElasticSearch
-    * What is ES
-        * Elasticsearch is an Apache Lucene-based search server
-        * A real-time distributed and open source full-text search and analytics engine.
-        * accessible from RESTful web service interface and uses schema less JSON (JavaScript Object Notation) documents to store data. 
-        * It enables users to explore very large amount of data at very high speed.
-    * Key features:
-        * scalable up to petabytes of structured and unstructured data.
-        * can be used as a replacement of document stores like MongoDB
-        * currently being used by many big organizations like Wikipedia, StackOverflow, GitHub etc.
-        * open source and available under the Apache license.
+
+<a name="topic2-es"></a>  
+### ElasticSearch (ES)
+* What is ES?
+    * Elasticsearch is an Apache Lucene-based search server
+    * A real-time distributed and open source full-text search and analytics engine.
+    * accessible from RESTful web service interface and uses schema less JSON (JavaScript Object Notation) documents to store data. 
+    * It enables users to explore very large amount of data at very high speed.
+* Key features:
+    * scalable up to petabytes of structured and unstructured data.
+    * can be used as a replacement of document stores like MongoDB
+    * currently being used by many big organizations like Wikipedia, StackOverflow, GitHub etc.
+    * open source and available under the Apache license.
         
-    * Install ES via [ElasticSearch Download](https://www.elastic.co/downloads/elasticsearch).
-    * Install PostMan to try some ES Basic operations
-        * Creating an index: (school)
-        * Inserting a new index:
-            * localhost:9200/school/_doc
-              ```json
-                {
-                    "name":"Saint Paul School222", 
-                    "description":"ICSE Afiliation222",
-                    "street":"Dawarka", 
-                    "city":"Delhi", 
-                    "state":"Delhi", 
-                    "zip":"110075",
-                    "location":[28.5733056, 77.0122136], 
-                    "fees":5000,
-                    "tags":["Good Faculty", "Great Sports"], 
-                    "rating":"4.5"
-                }
-                ```
+#### Install ES via [ElasticSearch Download](https://www.elastic.co/downloads/elasticsearch).
+#### Install PostMan to try some ES Basic operations
+* Creating an index: (school)
+* Inserting a new record to school index
+```json
+localhost:9200/school/_doc
+{
+    "name":"Saint Paul School222", 
+    "description":"ICSE Afiliation222",
+    "street":"Dawarka", 
+    "city":"Delhi", 
+    "state":"Delhi", 
+    "zip":"110075",
+    "location":[28.5733056, 77.0122136], 
+    "fees":5000,
+    "tags":["Good Faculty", "Great Sports"], 
+    "rating":"4.5"
+}
+```
     
-            * Data organization under ES
-                * Elasticsearch_manipulation/d2p3-tweet-indexing.ipynb
-    * Document indexing
-    
-    * Query Processing
+* Data organization under ES
+    * An index is a collection of documents and each document is a collection of fields, 
+    which are the key-value pairs that contain your data.
+    * Elasticsearch also has the ability to be schema-less, 
+    which means that documents can be indexed without explicitly specifying how to handle each of the different fields that might occur in a document.
+    * however, you know more about your data and how you want to use it than Elasticsearch can. You can define rules to control dynamic mapping and explicitly define mappings
+    * [More information ](https://www.elastic.co/guide/en/elasticsearch/reference/master/documents-indices.html)
+
+* Document indexing
+* Query Processing
 
 
 
