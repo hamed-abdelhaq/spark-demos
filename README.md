@@ -230,20 +230,23 @@ throughout a single application. In other words, Spark SQL allows developers to:
     
 * Import relational data from Parquet files and Hive tables
 * Run SQL queries over imported data and existing RDDs
-* How to build UDF and call during the manipulation of DataFrames
+* Build UDF and call during the manipulation of DataFrames
 * Easily  write RDDs out to Parquet files and other storage resources
 
 ### Comparison Between RDDs, DataFrame, and Datasets
  [Resource 2.1](https://data-flair.training/blogs/apache-spark-rdd-vs-dataframe-vs-dataset/)
 brief introduction of Spark APIs i.e. RDD, DataFrame and Dataset
 * RDD is the fundamental data structure of Spark. It allows a programmer to perform in-memory computations on large clusters in a fault-tolerant manner
-* Spark Dataframe APIs: 
+* Spark Dataframe: 
     * data organized into named columns
     * similar to tables in a relational database
     * allows developers to impose a structure onto a distributed collection of data
-* Spark Dataset APIs:
+    * memory management and optimized execution plan
+* Spark Dataset:
     * extension of DataFrame API
     * provides type-safe, object-oriented programming interface
+    * If you are trying to access the column which does not exist in the table,
+     Dataset APIs does support compile-time error.
         
 ### Parquet files as Columnar file format 
 Parquet stores binary data in a column-wise manner. That is the values in each column are organized so that they are all 

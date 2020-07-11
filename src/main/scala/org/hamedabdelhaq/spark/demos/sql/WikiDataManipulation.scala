@@ -72,21 +72,38 @@ object WikiDataManipulation {
     println("The number of distinct users is: " + wikiData.select("username").distinct().count());
 
 
+
     // return the number of words with capital letters in 'title'
-    val getNumOfCap = (str:String) => {
-      var c = 0;
-      str.split(" ").foreach(f=>{
-        if (f.charAt(0).isUpper)
-          c = c +1
-      })
-      c;
-    };
-
-    val countUpper = udf(getNumOfCap);
 
 
-    val xx = wikiData.withColumn("countUpper", countUpper($"title") )
-    xx.select('title, $"countUpper").show(10, false);
+    //System.exit(0);
+
+
+    //Displaying the DataFrame after incrementing id by 1.
+    wikiData.select($"id" ,$"id" + 1, $"title").show(10)
+
+
+
+
+    //We filter out all the records whose ids below 12401596 and display the result.
+    wikiData.filter($"id" > 12401596).show(10)
+
+
+
+
+    // using standard SQL to pose queries over spark
+    wikiData.createOrReplaceTempView("wikiTable")
+    val sqlDF = spark.sql("SELECT * FROM wikiTable")
+    sqlDF.show(20)
+
+
+
+
+    val wikiDS = wikiData.as[WikiDataClass];
+      wikiDS.show(50)
+
+    wikiData.printSchema()
+
 
 
     //wikiData.select("text").collect().foreach(println)
@@ -95,3 +112,6 @@ object WikiDataManipulation {
   }
 
 }
+
+case class WikiDataClass( id:Integer, title:String,  modified:Long, text:String, username:String);
+
