@@ -269,7 +269,7 @@ val df = spark.read.parquet("path_of_parquet_file")
 
 
 
-### Data exploration using Spark SQL (Applicatons)
+### Data exploration using Spark SQL (Applications)
    <!-- Loading wiki data (parquet file) [Resource 2.3](https://bit.ly/2TcAlHL) -->
    
    * _App-1_: In this demo, we read a json file containing a large number of records representing customer information.
@@ -332,10 +332,9 @@ localhost:9200/school/_doc
 
 <a name="topic3"></a>
 ## Topic-3: Machine Learning using Spark
-### Spark ML Library
-   * Introduction to Spark MLlib
-   
-       MLlib is Spark’s machine learning (ML) library that makes the implementation of different machine learning algorithms
+### Introduction to Spark MLlib
+<a name="topic3-ml-intro"></a>
+   * MLlib is Spark's machine learning (ML) library makes the implementation of different machine learning algorithms
         scalable and easy. 
        The main features of MLlib can be summarized as follows:
        
@@ -345,58 +344,66 @@ localhost:9200/school/_doc
        * _Persistence_: saving and load algorithms, models, and Pipelines
       
        [more details on Spark MLlib] (https://spark.apache.org/docs/latest/ml-guide.html)
-       
-   * Transformers, estimators, and pipelines:
+       <a name="topic3-pipeline"></a>
+   * __Transformers, estimators, and pipelines:__
    
         First, let's start with ML Pipelines. ML Pipelines provide a uniform set of high-level APIs built on top of DataFrames 
     allowing users to create and tune practical machine learning pipelines.
     
-        * Transformer: A Transformer is an algorithm which can transform one DataFrame into another DataFrame. 
+        * __Transformer__: A Transformer is an algorithm which can transform one DataFrame into another DataFrame. 
    E.g., an ML model is a Transformer which transforms a DataFrame with features into a DataFrame with predictions.
     
-        * Estimator: An Estimator is an algorithm which can be fit on a DataFrame to produce a Transformer. 
+        * __Estimator__: An Estimator is an algorithm which can be fit on a DataFrame to produce a Transformer. 
         E.g., a learning algorithm is an Estimator which trains on a DataFrame and produces a model.
     
-        * Pipeline: A Pipeline chains multiple Transformers and Estimators together to specify an ML workflow.
+        * __Pipeline__: A Pipeline chains multiple Transformers and Estimators together to specify an ML workflow.
         
- * App-1:[Regression in Boston Housing Dataset](src/main/scala/ml/spark/PricePrediction.scala)
-     * ILOs to be achieved:
-        1. Applying transformers and estimators.
-        2. combining predictors (features) using VectorAssembler.
-        3. Applying LinearRegression and RandomForestRegressor as estimators in Spark MLlib.
-        4. Model evaluation using R2 ans RMSE.
-     * Read more about the data [here](https://www.kaggle.com/c/boston-housing)
-     * practice-1: using class ParamGridBuilder to conduct model selection and improve the 
-     performance the generated model. Use this resource: [model selection using hyper-parameter tuning](https://spark.apache.org/docs/2.1.0/ml-tuning.html#example-model-selection-via-train-validation-split)
-    
- * App-2: Using MLlib in Spark to predict which passengers survived the Titanic shipwreck.
-    * ILOs to be achieved:
-        1. Using pipline as estimators
-        2. Creating classification models using MLlib
-        3. Introducing and using StringIndexer and OneHotEncoder.
-        
-     * Practices:
-        1. rewrite the code using pyspark
-        2. evaluate the model built above by calculating:
-            1. the accuracy, precision, and recall
-            2. AUC (extra)
-            3. Use Random forest and compare its results with Logistic regression
+### Applications
+<a name="topic3-ml-bostonHousing"></a>
+#### Practice-1:[Regression in Boston Housing Dataset](src/main/scala/ml/spark/PricePrediction.scala)
+he goal here is to build a regression model using
+data collected from homes in suburbs of Boston. 
+This model is used to make prediction about the monetary value of houses in Boston, 
+which is very beneficial for  real estate agents who could make use of such information on a daily basis.
+* __ILOs to be achieved:__
+    1. Applying transformers and estimators.
+    2. combining predictors (features) using VectorAssembler.
+    3. Applying LinearRegression and RandomForestRegressor as estimators in Spark MLlib.
+    4. Model evaluation using R2 ans RMSE.
+* Read more about the data [here](https://www.kaggle.com/c/boston-housing)
+* __Exercise-1:__ using class ParamGridBuilder to conduct model selection and improve the 
+     performance the generated model. 
+     Use this resource: [model selection using hyper-parameter tuning](https://spark.apache.org/docs/2.1.0/ml-tuning.html#example-model-selection-via-train-validation-split)
+ 
+ <a name="topic3-ml-survive-titanic"></a> 
+#### Practice-2: [Classification- Who would survive Titanic Shipwreck?](src/main/scala/org/hamedabdelhaq/spark/demos/ml/spark/TitanicSurvivalPrediction.scala)
+Using MLlib in Spark to predict which passengers survived the Titanic shipwreck.
+* __ILOs to be achieved:__
+    1. Using pipeline as estimators
+    2. Creating classification models using MLlib
+    3. Introducing and using StringIndexer and OneHotEncoder.
+
+* __Exercises__
+    1. rewrite the code using pyspark
+    2. evaluate the model built above by calculating:
+        1. the accuracy, precision, and recall
+        2. AUC (extra)
+        3. Use Random forest and compare its results with Logistic regression
             
- * App-3: Personalized Movie Recommendations.
-    * ILOs to be achieved:
-        * 
-    * We will use two files from this MovieLens dataset: "ratings.dat" and "movies.dat". 
+<a name="topic3-ml-recommendation"></a> 
+#### Practice-3: [Personalized Movie Recommendation](src/main/scala/org/hamedabdelhaq/spark/demos/ml/spark/Recommendation.scala)
+* __ILOs to be achieved:__
+    1. having an idea about collaborative filtering.
+* We will use two files from this MovieLens dataset: "ratings.dat" and "movies.dat". 
     All ratings are contained in the file "ratings.dat" and are in the following format:
       ````
       UserID::MovieID::Rating::Timestamp
       ````
-      Movie information is in the file "movies.dat" and is in the following format:
       
+    Movie information is in the file "movies.dat" and is in the following format:
       ````
       MovieID::Title::Genres
-      ````
-    * Implementation: [code](src/main/scala/ml/spark/Recommendation.scala)
-        
+      ````        
 
 
 
