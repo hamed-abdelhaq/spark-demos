@@ -357,7 +357,18 @@ localhost:9200/school/_doc
         E.g., a learning algorithm is an Estimator which trains on a DataFrame and produces a model.
     
         * __Pipeline__: A Pipeline chains multiple Transformers and Estimators together to specify an ML workflow.
-        
+
+
+        Estimators and transformers
+
+     
+![image](images/estimator-transformer-upd.png)   
+
+
+
+    Estimators, transformers, and a pipeline
+![image](images/estimator-transformer-pipeline-upd.png)   
+     
 ### Applications
 <a name="topic3-ml-bostonHousing"></a>
 #### Practice-1:[Regression in Boston Housing Dataset](src/main/scala/ml/spark/PricePrediction.scala)
