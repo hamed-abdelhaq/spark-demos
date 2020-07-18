@@ -32,7 +32,7 @@ object MovieRecommendation {
     import spark.implicits._
 
 
-    val ratings = spark.read.textFile("D:\\data\\spark-training-master\\spark-training-master\\data\\movielens\\medium\\ratings.dat")
+    val ratings = spark.read.textFile("data/movielens/medium/ratings.dat")
       .map(parseRating)
       .toDF()
     val Array(training, test) = ratings.randomSplit(Array(0.8, 0.2))
@@ -60,7 +60,6 @@ object MovieRecommendation {
 
     // Generate top 10 movie recommendations for each user
     val userRecs = model.recommendForAllUsers(10)
-    userRecs.foreach(f=>println(f))
     // Generate top 10 user recommendations for each movie
     val movieRecs = model.recommendForAllItems(10)
   }
