@@ -371,7 +371,7 @@ localhost:9200/school/_doc
      
 ### Applications
 <a name="topic3-ml-bostonHousing"></a>
-#### Practice-1:[Regression in Boston Housing Dataset](src/main/scala/ml/spark/PricePrediction.scala)
+#### Practice-1:[Regression in Boston Housing Dataset](src/main/scala/org/hamedabdelhaq/spark/demos/ml/spark/PricePrediction.scala)
 he goal here is to build a regression model using
 data collected from homes in suburbs of Boston. 
 This model is used to make prediction about the monetary value of houses in Boston, 
