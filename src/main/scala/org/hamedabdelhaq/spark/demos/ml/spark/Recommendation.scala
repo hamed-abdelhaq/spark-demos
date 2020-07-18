@@ -5,10 +5,9 @@ import org.apache.log4j.varia.NullAppender
 import org.apache.log4j.{BasicConfigurator, Level, Logger}
 import org.apache.spark.SparkConf
 import org.apache.spark.SparkContext
-import org.apache.spark.SparkContext._
-
 import org.apache.spark.rdd._
 import org.apache.spark.mllib.recommendation.{ALS, MatrixFactorizationModel, Rating}
+import org.apache.spark.sql.SparkSession
 
 import scala.io.Source
 
@@ -20,32 +19,28 @@ object Recommendation {
 
     val nullAppender = new NullAppender
     BasicConfigurator.configure(nullAppender)
-//    Logger.getLogger("org.eclipse.jetty.server").setLevel(Level.OFF)
 
-//    if (args.length != 2) {
-//      println("Usage: /path/to/spark/bin/spark-submit --driver-memory 2g --class MovieLensALS " +
-//        "target/scala-*/movielens-als-ssembly-*.jar movieLensHomeDir personalRatingsFile")
-//      sys.exit(1)
-//    }
 
     // set up environment
 
-    val conf = new SparkConf()
-      //.setMaster("local")
-      .setAppName("MovieLensALS")
-      .set("spark.executor.memory", "3g")
+    val spark = SparkSession.builder().
+      appName("MovieLensALS")
+      .config("spark.executor.memory", "3g")
+      .master("local")
+      .getOrCreate()
 
-    val sc = new SparkContext(conf)
+
+    val sc = spark.sparkContext;
 
     //import spark.implicits._
     // load personal ratings
 
-    val myRatings = loadRatings("D:\\data\\spark-training-master\\spark-training-master\\machine-learning\\personalRatings.txt")
-    val myRatingsRDD = sc.parallelize(myRatings, 1)
+    val myRatings = loadRatings("data/movielens/personalRatings.txt")
+    val myRatingsRDD = sc.parallelize(myRatings)
 
     // load ratings and movie titles
 
-    val movieLensHomeDir = "D:\\data\\spark-training-master\\spark-training-master\\data\\movielens\\medium"//args(0)
+    val movieLensHomeDir = "data/movielens/medium"//args(0)
 
     val ratings = sc.textFile(new File(movieLensHomeDir, "ratings.dat").toString).map { line =>
       val fields = line.split("::")
@@ -54,7 +49,7 @@ object Recommendation {
     }
 
     val movies = sc.textFile(new File(movieLensHomeDir,
-      "D:\\data\\spark-training-master\\spark-training-master\\data\\movielens\\medium\\movies.dat").toString).map { line =>
+      "movies.dat").toString).map { line =>
       val fields = line.split("::")
       // format: (movieId, movieName)
       (fields(0).toInt, fields(1))

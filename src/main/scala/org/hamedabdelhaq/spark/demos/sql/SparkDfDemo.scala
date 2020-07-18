@@ -29,6 +29,8 @@ object SparkDfDemo {
 
     df.show(10)
 
+    //System.exit(0)
+
     // calculating the number of customers per city
     // groupedByCity: dataframe
     val groupedByCity = df
@@ -36,7 +38,7 @@ object SparkDfDemo {
       .count()
     groupedByCity.show(10)
 
-    System.exit(0)
+    //System.exit(0)
 
 
     // implicits object gives implicit conversions for converting Scala objects (incl. RDDs)
@@ -51,7 +53,7 @@ object SparkDfDemo {
 
     ///////////////////////////////
     // count the number of customers whose first name is "Robert" and last name is "Smith"
-    // filteredDF: DateSet
+    // filteredDF: DateSet[Row]
     val filteredDF =
       df.filter('customer_fname === "Robert" && $"customer_lname" === "Smith");
     println("count the number of customers whose first name is \"Robert\" and last name is \"Smith\"" + filteredDF.count())
@@ -72,7 +74,7 @@ object SparkDfDemo {
     println("City with most frequent 'Robert Smith' is " + cityWithMostFreq)
 
 
-
+    //System.exit(0)
     ///////////////////////////////////
     // Practice-2.3:
     // Here, you need to know how to join two dataframes with each others in order to find the top-5 customers

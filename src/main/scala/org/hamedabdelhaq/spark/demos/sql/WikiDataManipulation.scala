@@ -34,7 +34,7 @@ object WikiDataManipulation {
     // display top 10 rows in wikiData dataframe
     wikiData.show(10)
 
-
+    //System.exit(0)
 
     // Here, we create a function to apply a custom transformation to a dataframe
     //It is used by passing it to 'transform' function. As a result, it generates
@@ -49,9 +49,8 @@ object WikiDataManipulation {
 
 
     println("The resulting dataframe after adding 'Magic' column.")
-    wikiData
-      .transform(withMagic())
-      .show(10)
+    val newDF = wikiData.transform(withMagic())
+    newDF.show(10)
     //////////////////////////////////////////////////////////////////
 
     //System.exit(0)
@@ -62,8 +61,11 @@ object WikiDataManipulation {
     val upper = (str: String) => {
       val str1 = str.replace("{","").replace("'","").replace("}", "");
        str1.toUpperCase};
+
     val upperUDF = udf(upper);
     println("Adding a new column 'Cap' using scala UDF");
+
+
     wikiData.withColumn("Cap", upperUDF('text)).show(10)
 
 
@@ -71,12 +73,26 @@ object WikiDataManipulation {
     // counting distinct 'usernames'
     println("The number of distinct users is: " + wikiData.select("username").distinct().count());
 
-
+    //System.exit(0)
 
     // return the number of words with capital letters in 'title'
 
+    val scalaGetNoCap = (str:String) => {
 
-    //System.exit(0);
+      var c = 0;
+      str.split(" ").foreach(w => {
+        if(w.charAt(0).isUpper)
+          c = c +1
+      })
+
+      c;
+
+    }
+
+    val noOfCap = udf(scalaGetNoCap);
+
+    wikiData.withColumn("noOfCap", noOfCap('title)).show(10)
+    System.exit(0);
 
 
     //Displaying the DataFrame after incrementing id by 1.

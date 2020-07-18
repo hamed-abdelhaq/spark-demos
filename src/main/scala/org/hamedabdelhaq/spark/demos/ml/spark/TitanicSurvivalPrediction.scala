@@ -14,6 +14,8 @@ object TitanicSurvivalPrediction {
 
     val spark = SparkSession.builder().master("local").getOrCreate()
 
+    // For more information about the data:
+    // https://www.kaggle.com/c/titanic/data
     val data = spark.read.
       option("header", "true").
       option("inferSchema","true").
@@ -26,11 +28,22 @@ object TitanicSurvivalPrediction {
     import spark.implicits._
 
 
-    val datapreparedAll = data.select(data("Survived").as("label"), 'Pclass, 'Name, 'Sex,'Age, 'SibSp, 'Parch,'Fare,'Embarked)
+    val datapreparedAll = data.
+      select(data("Survived").as("label"),
+        'Pclass,
+        'Name,
+        'Sex,
+        'Age,
+        'SibSp,
+        'Parch,
+        'Fare,
+        'Embarked)
 
-    println(datapreparedAll.count());
+    println(s"Number of samples before removing records with Nulls: ${datapreparedAll.count()}");
+
     val dataprepared = datapreparedAll.na.drop();
-    println(dataprepared.count());
+    println(s"Number of samples after removing records with Nulls: ${dataprepared.count()}");
+
 
 
     // Converting Strings into numerical values
@@ -41,8 +54,8 @@ object TitanicSurvivalPrediction {
     val genderEncoder = new OneHotEncoder().setInputCol("SexIndex").setOutputCol("SexVec");
     val embarkedEncoder = new OneHotEncoder().setInputCol("EmbarkedIndex").setOutputCol("EmbarkedVec");
 
-    // (Label, features)
 
+    // (Label, features)
     val assembler = new VectorAssembler().
       setInputCols(Array("Pclass", "SexVec","Age", "SibSp", "Parch","Fare","EmbarkedVec")).
       setOutputCol("features")
@@ -52,6 +65,7 @@ object TitanicSurvivalPrediction {
     // set up the pipeline
 
     val lr = new LogisticRegression();
+
     val pipeline  = new Pipeline().
       setStages(
         Array(genderIndexer,
@@ -68,6 +82,7 @@ object TitanicSurvivalPrediction {
     val result = model.transform(test);
 
     result.show(100)
+    //System.exit(0);
     //val predictionAndLabels = result.select($"prediction", $"label").as[(Double, Double)].rdd;
 
 
@@ -83,8 +98,8 @@ object TitanicSurvivalPrediction {
       .setPredictionCol("prediction")
       .setMetricName("f1")
 
-    val accuracy = evaluator.evaluate(result)
-    println(s"Test set accuracy = $accuracy")
+    val f_score = evaluator.evaluate(result)
+    println(s"Test set f-score = $f_score")
 
 
 
