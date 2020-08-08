@@ -454,8 +454,6 @@ Spark NLP is an open-source natural language processing library, built on top of
 
 
 * Practice-1: Text Preprocessing and NER using Spark  
-[Exercise Description](https://bit.ly/2V1gewW)  
-[code](https://github.com/hamed-abdelhaq/big-data-demos/blob/master/Spark-NLP/d4p1-ner-pos-relationship.ipynb)  
-[data](https://github.com/hamed-abdelhaq/big-data-demos/tree/master/data/spark_nlp_dataset.parquet)
+[data](https://github.com/hamed-abdelhaq/spark-demos/tree/master/data/spark_nlp_dataset.parquet)
 
 <a name="topic5"></a>
