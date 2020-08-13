@@ -22,8 +22,7 @@ object WordCountSpark {
 
 
     val text = sc.textFile("data/bigFile.txt")
-    val counts = text.flatMap(line => line.split(" ")
-    ).map(word => (word,1)).reduceByKey(_+_)
+    val counts = text.flatMap(line => line.split(" ")).map(word => (word,1)).reduceByKey(_+_)
 
 
     counts.saveAsTextFile("data/wordCountResult");

@@ -457,3 +457,28 @@ Spark NLP is an open-source natural language processing library, built on top of
 [data](https://github.com/hamed-abdelhaq/spark-demos/tree/master/data/spark_nlp_dataset.parquet)
 
 <a name="topic5"></a>
+
+## Streaming in Apache Spark
+
+### Spark Streaming:
+
+Spark Streaming is an extension of the core Spark API that enables scalable, high-throughput, fault-tolerant stream processing of live data streams.
+
+* Data can be ingested from many sources like Kafka, Kinesis, or TCP sockets, 
+* Data can be processed using complex algorithms expressed with high-level functions like map, reduce, join and window.
+[more details ](https://spark.apache.org/docs/latest/streaming-programming-guide.html)
+![image](images/Apache-Spark-Streaming-ecosystem-diagram.png)<br />[taken from: https://databricks.com/glossary/what-is-spark-streaming] 
+<br>
+
+* Spark Streaming receives live input data streams and divides the data into batches
+    * batches are then processed by the Spark engine to generate the final stream of results in batches.
+![image](images/streaming-flow.png)<br />[taken from: https://spark.apache.org/docs/latest/streaming-programming-guide.html]
+* Spark Streaming provides a high-level abstraction called discretized stream or __DStream__, which represents a continuous stream of data.
+    * can be created either from input data streams from sources such as Kafka, and Kinesis, 
+    * or by applying high-level operations on other DStreams
+* Internally, a DStream is represented as a sequence of RDDs.
+      
+  
+
+
+
