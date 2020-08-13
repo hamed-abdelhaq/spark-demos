@@ -50,46 +50,15 @@ object RevenueRetrieval {
 
 
     //Practice-1.1) replace the above mapValues by map to achieve the same functionality.
-    val average_by_key2 = orderItems
-      .map(oi => (oi.split(",")(1).toInt, (oi.split(",")(4).toFloat, 1)))
-      .reduceByKey((x,y) => ((x._1+y._1),(x._2+y._2)))
-      .map(x=>(x._1,(x._2._1/ x._2._2)))
-      .map(oi => oi._1 + "," + oi._2)
 
-
-    val Practice1_1 = orderItems
-      .map(oi => (oi.split(",")(1).toInt, (oi.split(",")(4).toFloat, 1)))
-      .reduceByKey((x,y) => ((x._1+y._1),(x._2+y._2)))
-      .map(x => (x._1, x._2._1 / x._2._2))
-
-    average_by_key2.collect().take(10).foreach(println);
-
-
-    sys.exit(0);
     //Practice-1.2) Find the total number of items sold for each order
 
-    val TotalItemPerOrder= orderItems
-      .map(oi => (oi.split(",")(1).toInt, oi.split(",")(3).toInt))
-      .reduceByKey((x,y) => (x + y))
-      //.reduceByKey(_ + _)
-      .map(oi => oi._1 + "," + oi._2)
-    TotalItemPerOrder.saveAsTextFile(args(2))
 
-    val itemsPerOrder = orderItems
-      .map(oi => (oi.split(",")(1).toInt, oi.split(",")(3).toInt))
-      .reduceByKey((x,y) => (x + y))
-      //.reduceByKey(_ + _)
-      .map(oi => oi._1 + "," + oi._2)
 
 
 
 
     //Practice-1.3) Find the average number of items sold for each product
-
-    val Practice1_3 = orderItems
-      .map(oi => (oi.split(",")(2).toInt, (oi.split(",")(3).toFloat, 1)))
-      .reduceByKey((x,y) => ((x._1+y._1),(x._2+y._2)))
-      .map(x => (x._1, x._2._1 / x._2._2))
 
 
 
