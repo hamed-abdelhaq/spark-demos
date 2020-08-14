@@ -477,8 +477,15 @@ Spark Streaming is an extension of the core Spark API that enables scalable, hig
     * can be created either from input data streams from sources such as Kafka, and Kinesis, 
     * or by applying high-level operations on other DStreams
 * Internally, a DStream is represented as a sequence of RDDs.
-      
-  
+
+### Practice-1: [Counting words using Spark Streaming](src/main/scala/org/hamedabdelhaq/spark/demos/streaming/WordCountFromStream.scala)
+* In this practice, students understand how to:
+    * using spark to create a streaming context.
+    * Build a consumer that receives lines of text and counts the number of words in an streaming fashion
+    * using DStream APIs
+    
+
+
 
 
 
