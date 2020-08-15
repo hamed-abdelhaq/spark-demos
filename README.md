@@ -484,6 +484,38 @@ Spark Streaming is an extension of the core Spark API that enables scalable, hig
     * Build a consumer that receives lines of text and counts the number of words in an streaming fashion
     * using DStream APIs
     
+### Practice-2: [Counting Words with Structured Spark Streaming using aggregation in Spark SQL](src/main/scala/org/hamedabdelhaq/spark/demos/streaming/StructuredSparkStreaming.scala)
+* In this practice, students understand how to:
+    * using spark to create a streaming context.
+    * using Dataframes and datasets in a streaming context
+    
+    
+    
+    
+### Practice-3: Demo for producer/consumer under Kafka using CLI
+<a name="topic5-demo-kafka-cli"></a>
+
+* Running Zookeeper
+```
+zkServer.cmd
+```
+* Running Kafka server
+````
+kafka-server-start.bat [path to server.properties]
+````
+
+* Creating a new topic
+````
+kafka-topics.bat --create --topic [topic name] --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+````
+* Running a producer to send events to that topic
+````
+kafka-console-producer.bat --topic [topic name] --broker-list localhost:9092
+````
+* Running a consumer to read these events (messeges) 
+````
+kafka-console-consumer.bat --topic testing-kafka1 --bootstrap-server localhost:9092 --from-beginning
+````
 
 
 

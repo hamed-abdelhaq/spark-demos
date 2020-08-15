@@ -10,14 +10,17 @@ import org.apache.spark.sql.streaming.Trigger
 
 object StructuredSparkStreaming {
   def main(args: Array[String]): Unit = {
-    val nullAppender = new NullAppender
-    BasicConfigurator.configure(nullAppender)
+//    val nullAppender = new NullAppender
+//    BasicConfigurator.configure(nullAppender)
 
     val spark = SparkSession
       .builder
-      .master("local[*]")
+      .master("local[8]")
       .appName("StructuredNetworkWordCount")
       .getOrCreate()
+
+    spark.conf.set("spark.sql.shuffle.partitions", 2)
+    spark.sparkContext.setLogLevel("WARN")
 
     import spark.implicits._
 
@@ -29,10 +32,8 @@ object StructuredSparkStreaming {
       .load()
 
 
-    val words = lines.as[String].flatMap(_.split(" "))
-
     // Split the lines into words
-    //val words = lines.as[String].flatMap(_.split(" "))
+    val words = lines.as[String].flatMap(_.split(" "))
 
     // Generate running word count
     val wordCounts = words.groupBy("value").count()
@@ -41,7 +42,7 @@ object StructuredSparkStreaming {
     val query = wordCounts.writeStream
       .outputMode("complete")
       .format("console")
-      .trigger(Trigger.ProcessingTime(1))
+      .trigger(Trigger.ProcessingTime("5 seconds"))
       .start()
     query.awaitTermination()
 

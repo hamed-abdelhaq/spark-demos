@@ -21,29 +21,10 @@ object KafkaConsumer {
 
 //    val nullAppender = new NullAppender
 //    BasicConfigurator.configure(nullAppender)
-////    val kafkaParams = Map[String, Object](
-////      "bootstrap.servers" -> "localhost:9092,anotherhost:9092",
-////      "key.deserializer" -> classOf[StringDeserializer],
-////      "value.deserializer" -> classOf[StringDeserializer],
-////      "group.id" -> "use_a_separate_group_id_for_each_stream",
-////      "auto.offset.reset" -> "latest",
-////      "enable.auto.commit" -> (false: java.lang.Boolean)
-////    )
-//
-//    // Create a local StreamingContext with two working thread and batch interval of 1 second.
-//    // The master requires 2 cores to prevent a starvation scenario.
+
 //
     val conf = new SparkConf().setMaster("local[2]").setAppName("NetworkWordCount")
     val ssc = new StreamingContext(conf, Seconds(10))
-//
-//    val stream = KafkaUtils.createStream(ssc,"localhost:2181", "ffff", Map("testing-kafka1"->1))
-//    stream.print()
-//
-//    ssc.start()
-//    ssc.awaitTermination()
-
-
-
 
 
     val kafkaParams = Map[String, Object](

@@ -4,7 +4,6 @@ import org.apache.log4j.BasicConfigurator
 import org.apache.log4j.varia.NullAppender
 import org.apache.spark._
 import org.apache.spark.streaming._
-import org.apache.spark.sql.SparkSession
 
 
 object WordCountFromStream {
@@ -15,11 +14,11 @@ object WordCountFromStream {
 
 
 
-    // Create a local StreamingContext with two working thread and batch interval of 1 second.
+    // Create a local StreamingContext with two working thread and batch interval of 3 second.
     // The master requires 2 cores to prevent a starvation scenario.
 
     val conf = new SparkConf().setMaster("local[2]").setAppName("NetworkWordCount")
-    val ssc = new StreamingContext(conf, Seconds(5))
+    val ssc = new StreamingContext(conf, Seconds(3))
 
     // Create a DStream that will connect to hostname:port, like localhost:9999
     val lines = ssc.socketTextStream("localhost", 9999)
@@ -31,12 +30,11 @@ object WordCountFromStream {
     // Count each word in each batch
     val pairs = words.map(word => (word, 1))
     val wordCounts = pairs.reduceByKey(_ + _)
-
+//    val wordCountsMapped = wordCounts.map(x=>("The word " + x._1 + " has a frequency of " + x._2))
+//    wordCountsMapped.foreachRDD(x=>{x.collect().foreach(println)})
     // Print the first ten elements of each RDD generated in this DStream to the console
-    //println("ddd " + wordCounts.count())
-    wordCounts.print()
+   wordCounts.print()
     //wordCounts.foreachRDD(x=>{println(x.id + " " +x.count())})
-
 
 
     ssc.start()             // Start the computation
